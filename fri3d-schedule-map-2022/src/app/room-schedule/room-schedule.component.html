@@ -1,0 +1,13 @@
+<div class="room">
+  <p>{{ room }}</p>
+  <div class="timeline" [style.width]="lengthOfTimeblock + 'px'">
+    <div
+      class="event-block"
+      [style.width]="calculateEventDuration(event) + 'px'"
+      [style.left]="calculateStartPosition(event) + 'px'"
+      *ngFor="let event of events"
+    >
+      <p>{{ event.title }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<ng-container *ngIf="root">
+  <p>{{ root.schedule.conference.title }}</p>
+  <div class="rooms">
+    <fri3d-schedule-map-room-schedule
+      *ngFor="let room of rooms"
+      [room]="room"
+      [events]="getAllEventsForRoom(room)"
+      [lengthOfTimeblock]="lengthOfTimeblock"
+    ></fri3d-schedule-map-room-schedule>
+  </div>
+</ng-container>
+
+<p *ngIf="!root">Loading...</p>
