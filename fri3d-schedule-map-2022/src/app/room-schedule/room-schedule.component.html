@@ -5,6 +5,7 @@
       class="event-block"
       [style.width]="calculateEventDuration(event) + 'px'"
       [style.left]="calculateStartPosition(event) + 'px'"
+      [style.backgroundColor]="getBackgroundColor()"
       *ngFor="let event of events"
     >
       <p>{{ event.title }}</p>

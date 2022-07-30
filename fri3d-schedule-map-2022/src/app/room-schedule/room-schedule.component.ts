@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { getLocations } from '../shared/locations.model';
 import { Event } from '../shared/schedule.model';
 import { ScheduleService } from '../shared/schedule.service';
 
@@ -29,5 +30,14 @@ export class RoomScheduleComponent implements OnInit {
     const startPosition = this.scheduleService.calculateStartPosition(event);
     console.log(`Startposition of ${event.title}: ${startPosition}`);
     return startPosition;
+  }
+
+  getBackgroundColor() {
+    const location = this.room;
+    const existingLocations = getLocations();
+    const roomColor = existingLocations.find((x) =>
+      x.eventLocations.some((loc) => loc === location)
+    )?.color;
+    return roomColor;
   }
 }
