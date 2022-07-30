@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    flex-direction: row wrap;
+    gap: 2em;
+    justify-content: flex-start;
+    height: auto;
+    .sticky{
+        position: fixed;
+        margin-left:48vw
+    }
+}

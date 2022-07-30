@@ -1,10 +1,10 @@
 <div class="room">
-  <p>{{ room }}</p>
-  <div class="timeline" [style.width]="lengthOfTimeblock + 'px'">
+  <p class="title">{{ room }}</p>
+  <div class="timeline" [style.height]="lengthOfTimeblock + 'px'">
     <div
       class="event-block"
-      [style.width]="calculateEventDuration(event) + 'px'"
-      [style.left]="calculateStartPosition(event) + 'px'"
+      [style.height]="calculateEventDuration(event) + 'px'"
+      [style.top]="calculateStartPosition(event) + 'px'"
       [style.backgroundColor]="getBackgroundColor()"
       *ngFor="let event of events"
     >
