@@ -1,6 +1,13 @@
 <div class="room">
-  <p class="title">{{ room }}</p>
-  <div class="timeline" [style.height]="lengthOfTimeblock + 'px'">
+  <!-- <p class="title">{{ room }}</p> -->
+  <div
+    class="timeline"
+    [style.height]="lengthOfTimeblock + 'px'"
+    [style.backgroundColor]="getBackgroundColor() + '50'"
+  >
+    <div class="background">
+      {{ room }}
+    </div>
     <div
       class="event-block"
       [style.height]="calculateEventDuration(event) + 'px'"

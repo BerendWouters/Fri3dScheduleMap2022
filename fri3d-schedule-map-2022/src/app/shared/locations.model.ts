@@ -18,7 +18,7 @@ export function getLocations(): Location[] {
     {
       name: 'Hoofdgebouw',
       eventLocations: [
-        'Medium Mosfet 0',
+        'Medium Mosfet',
         'Low Voltage',
         'Tiny Tesseract',
         'Large LED',
@@ -28,8 +28,14 @@ export function getLocations(): Location[] {
       location: [50.79866, 4.66632],
     },
     {
+      name: 'Shelter',
+      eventLocations: ['Shelter'],
+      color: '#fa4099',
+      location: [50.79917, 4.66494],
+    },
+    {
       name: 'Knutselbaar',
-      eventLocations: ['Ingegno', 'Junior Hackers'],
+      eventLocations: ['Ingegno', 'Junior hacking'],
       color: '#4b0e76',
       location: [50.80083, 4.66367],
     },
@@ -38,6 +44,12 @@ export function getLocations(): Location[] {
       eventLocations: ['Kapel'],
       color: '#04dc0d',
       location: [50.79842, 4.66588],
+    },
+    {
+      name: 'Hardware hacking',
+      eventLocations: ['Hardware hacking area'],
+      color: '#3793ba',
+      location: [50.80034, 4.6639],
     },
   ];
 }

@@ -1,5 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { tileLayer, latLng, circle, Circle } from 'leaflet';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  tileLayer,
+  latLng,
+  circle,
+  Circle,
+  marker,
+  Layer,
+  Marker,
+} from 'leaflet';
 import { getLocations, Location } from '../shared/locations.model';
 
 @Component({
@@ -8,6 +16,10 @@ import { getLocations, Location } from '../shared/locations.model';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
+  @Input() set selectedRoom(value: string) {
+    this.renderMarker(value);
+  }
+
   constructor() {}
 
   options = {
@@ -18,10 +30,12 @@ export class MapComponent implements OnInit {
       }),
     ],
     zoom: 17,
-    center: latLng(50.7998, 4.66434),
+    center: latLng(50.7998, 4.66844),
   };
 
-  layers: Circle[] = [];
+  layers: Layer[] = [];
+
+  marker!: Marker;
 
   ngOnInit() {
     const locations = getLocations();
@@ -33,5 +47,14 @@ export class MapComponent implements OnInit {
         fillOpacity: 100,
       })
     );
+  }
+
+  renderMarker(room: string) {
+    const location = getLocations().find((x) =>
+      x.eventLocations.some((loc) => loc === room)
+    );
+    if (location) {
+      this.marker = marker(location.location);
+    }
   }
 }

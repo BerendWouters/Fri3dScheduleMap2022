@@ -34,10 +34,11 @@ export interface RoomEvents {
   Shelter: Event[];
   Terrein: Event[];
   'Hardware hacking area': Event[];
-  'Medium Mosfet 0'?: Event[];
-  'Low Voltage': Event[];
+  'Medium Mosfet'?: Event[];
+  'Low Voltage'?: Event[];
   'Tiny Tesseract': Event[];
   'Large LED': Event[];
+  'Junior hacking': Event[];
 }
 
 export interface AccessRoomEvent {
@@ -48,7 +49,7 @@ export interface Event {
   id: number;
   guid: string;
   logo: string;
-  date: string;
+  date: Date;
   start: string;
   duration: string;
   room: string;

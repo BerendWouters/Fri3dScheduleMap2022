@@ -37,15 +37,57 @@ export class ScheduleService {
     const date = new Date(event.date);
     const startDate = new Date(this.root!.schedule.conference.start);
     startDate.setHours(0); // Timezone crappy hackz0r
-    console.log(date, startDate);
     return this.calculateMinutes(date, startDate);
   }
 
   private calculateMinutes(date: Date, startDate: Date) {
-    let diffMs = Math.abs(date.valueOf() - startDate.valueOf());
+    let diffMs = Math.abs(date.getTime() - startDate.getTime());
 
     let diffMins = diffMs / 1000 / 60;
     return Math.round(diffMins);
+  }
+
+  getAllEventsOrderedByDate(): Event[] {
+    let events: Event[] = [];
+    this.root?.schedule.conference.days.forEach((day) => {
+      const hha = day.rooms['Hardware hacking area']
+        ? day.rooms['Hardware hacking area']
+        : [];
+      const Kapel = day.rooms['Kapel'] ? day.rooms['Kapel'] : [];
+      const mainOne = day.rooms['Main One'] ? day.rooms['Main One'] : [];
+      const mainTwo = day.rooms['Main Two'] ? day.rooms['Main Two'] : [];
+      const lowVoltage = day.rooms['Low Voltage']
+        ? day.rooms['Low Voltage']
+        : [];
+      const mediumMosfet = day.rooms['Medium Mosfet']
+        ? day.rooms['Medium Mosfet']
+        : [];
+      const Shelter = day.rooms['Shelter'] ? day.rooms['Shelter'] : [];
+      const Terrein = day.rooms['Terrein'] ? day.rooms['Terrein'] : [];
+      const tinyTesseract = day.rooms['Tiny Tesseract']
+        ? day.rooms['Tiny Tesseract']
+        : [];
+      const juniorHacking = day.rooms['Junior hacking']
+        ? day.rooms['Junior hacking']
+        : [];
+      events = [
+        ...events,
+        ...hha,
+        ...Kapel,
+        ...mainOne,
+        ...mainTwo,
+        ...lowVoltage,
+        ...tinyTesseract,
+        ...juniorHacking,
+        ...mediumMosfet,
+        ...Shelter,
+        ...Terrein,
+      ];
+    });
+    events.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+    return events;
   }
 
   getEventsForRoom(room: string): Event[] {
@@ -79,7 +121,10 @@ export class ScheduleService {
         case 'Low Voltage':
           let events4: Event[] = [];
           this.root.schedule.conference.days.forEach((day) => {
-            events4 = [...events4, ...day.rooms['Low Voltage']];
+            const lowVoltage = day.rooms['Low Voltage'];
+            if (lowVoltage) {
+              events4 = [...events4, ...lowVoltage];
+            }
           });
           return events4;
         case 'Large LED':
@@ -94,10 +139,10 @@ export class ScheduleService {
             events6 = [...events6, ...day.rooms['Knutselbaar']];
           });
           return events6;
-        case 'Medium Mosfet 0':
+        case 'Medium Mosfet':
           let events7: Event[] = [];
           this.root.schedule.conference.days.forEach((day) => {
-            const mosfet = day.rooms['Medium Mosfet 0'];
+            const mosfet = day.rooms['Medium Mosfet'];
             if (mosfet) {
               events7 = [...events7, ...mosfet];
             }
@@ -125,6 +170,12 @@ export class ScheduleService {
             events10 = [...events10, ...day.rooms['Tiny Tesseract']];
           });
           return events10;
+        case 'Junior hacking':
+          let events11: Event[] = [];
+          this.root.schedule.conference.days.forEach((day) => {
+            events11 = [...events11, ...day.rooms['Junior hacking']];
+          });
+          return events11;
         default:
           break;
       }

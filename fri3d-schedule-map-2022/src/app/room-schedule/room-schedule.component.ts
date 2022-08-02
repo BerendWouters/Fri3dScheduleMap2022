@@ -22,13 +22,11 @@ export class RoomScheduleComponent implements OnInit {
     const hours = parseInt(durationArray[0]);
     let minutes = parseInt(durationArray[1]);
     minutes = hours * 60 + minutes;
-    console.log(minutes);
     return minutes;
   }
 
   calculateStartPosition(event: Event) {
     const startPosition = this.scheduleService.calculateStartPosition(event);
-    console.log(`Startposition of ${event.title}: ${startPosition}`);
     return startPosition;
   }
 

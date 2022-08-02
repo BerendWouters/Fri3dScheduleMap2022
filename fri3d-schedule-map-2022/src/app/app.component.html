@@ -1,4 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Fri3d Schedule map</span>
+</mat-toolbar>
 <div class="container">
-  <fri3d-schedule-map-schedule></fri3d-schedule-map-schedule>
-  <fri3d-schedule-map-map class="sticky"></fri3d-schedule-map-map>
+  <mat-card class="sticky">
+    <fri3d-schedule-map-map
+      [selectedRoom]="selectedRoom"
+    ></fri3d-schedule-map-map
+  ></mat-card>
+  <!-- <fri3d-schedule-map-schedule></fri3d-schedule-map-schedule> -->
+  <fri3d-schedule-map-schedule-list
+    (openRoomEvent)="onShowRoom($event)"
+  ></fri3d-schedule-map-schedule-list>
 </div>

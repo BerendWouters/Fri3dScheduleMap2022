@@ -1,0 +1,45 @@
+<ng-container *ngIf="root">
+  <div class="rooms">
+    <mat-card *ngFor="let event of events" class="event-card">
+      <mat-card-header>
+        <img
+          *ngIf="event.logo"
+          mat-card-avatar
+          [src]="'https://pretalx.fri3d.be' + event.logo"
+          alt="Photo of a Shiba Inu"
+        /><mat-card-title>{{ event.title }}</mat-card-title>
+        <mat-card-subtitle class="subtitle">
+          <mat-icon>map-marker</mat-icon>{{ event.room }}
+          <mat-icon>today</mat-icon>
+          {{ event.date | date: "yyyy-MM-dd hh:mm" }}</mat-card-subtitle
+        >
+      </mat-card-header>
+
+      <mat-card-content
+        ><p class="abstract">
+          {{ event.abstract | slice: 0:300 }}...
+        </p></mat-card-content
+      >
+      <mat-card-actions>
+        <div class="action-list">
+          <button
+            mat-mini-fab
+            color="primary"
+            (click)="showRoom(event.room)"
+            aria-label="Example icon button with a plus one icon"
+          >
+            <mat-icon>map</mat-icon>
+          </button>
+          <!-- <mat-chip-list>
+            <mat-chip
+              [style.backgroundColor]="getBackgroundColor(event.room)"
+              >{{ event.room }}</mat-chip
+            >
+          </mat-chip-list> -->
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>
+
+<p *ngIf="!root">Loading...</p>

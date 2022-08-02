@@ -1,0 +1,23 @@
+.rooms{
+    margin: 16px;
+    .event-card{
+        margin: 8px;
+        max-width: 80vh;
+    }
+}
+.action-list{
+    // margin-left: 16px;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.abstract{
+    // margin-left: 16px;
+}
+.subtitle{
+    display: flex;
+    align-items: center;
+    mat-icon:nth-child(2){
+        margin-left: 4px;
+    }
+}
