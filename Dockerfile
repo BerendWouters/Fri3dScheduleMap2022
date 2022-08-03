@@ -12,7 +12,7 @@ RUN npm ci && mkdir /app && mv ./node_modules ./app
 
 WORKDIR /app
 
-COPY . .
+COPY fri3d-schedule-map-2022 .
 
 ## Build the angular app in production mode and store the artifacts in dist folder
 
