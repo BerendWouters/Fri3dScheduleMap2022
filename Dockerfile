@@ -5,6 +5,7 @@
 FROM node:alpine as builder
 
 COPY fri3d-schedule-map-2022/package.json fri3d-schedule-map-2022/package-lock.json ./
+COPY entrypoint.sh entrypoint.sh
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
