@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { tap } from 'rxjs';
 import { getLocations } from '../shared/locations.model';
 import { Root, Event } from '../shared/schedule.model';
@@ -18,13 +18,42 @@ export class ScheduleListComponent implements OnInit {
 
   constructor(private scheduleService: ScheduleService) {}
 
+  private _showUpcomingEvents = false;
+  @Input() set showUpcomingEvents(value: boolean) {
+    this._showUpcomingEvents = value;
+    this.loadEvents();
+  }
+
+  get showUpcomingEvents() {
+    return this._showUpcomingEvents;
+  }
+
   ngOnInit(): void {
+    this.loadEvents();
+  }
+
+  loadEvents() {
     this.scheduleService
       .getSchedule()
       .pipe(tap((x) => (this.root = x)))
       .subscribe((x) => {
-        this.events = this.scheduleService.getAllEventsOrderedByDate();
+        this.events = this.filterEvents(
+          this.scheduleService.getAllEventsOrderedByDate()
+        );
       });
+  }
+
+  private filterEvents(events: Event[]): Event[] {
+    const now = new Date('2022-08-13T13:00:00+02:00');
+    if (this.showUpcomingEvents) {
+      console.log(events);
+      const filteredEvents = events.filter(
+        (x) => new Date(x.date).valueOf() > now.valueOf()
+      );
+      console.log(filteredEvents);
+      return filteredEvents;
+    }
+    return events;
   }
 
   getBackgroundColor(room: string) {

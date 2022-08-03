@@ -12,8 +12,15 @@ export class AppComponent {
   @ViewChild(MatDrawer) drawer!: MatDrawer;
   showMap = false;
   selectedRoom: string = '';
+
+  showUpcomingEvents = true;
+
   onShowRoom(room: string) {
     // this.drawer.open();
     this.selectedRoom = room;
+  }
+
+  onChangeUpcomingEvents() {
+    this.showUpcomingEvents = !this.showUpcomingEvents;
   }
 }

@@ -1,5 +1,13 @@
 <mat-toolbar color="primary">
   <span>Fri3d Schedule map</span>
+  <span class="example-spacer"></span>
+  <div class="actions">
+    <mat-slide-toggle
+      [checked]="showUpcomingEvents"
+      (toggleChange)="onChangeUpcomingEvents()"
+      >Show upcoming events</mat-slide-toggle
+    >
+  </div>
 </mat-toolbar>
 <div class="container">
   <mat-card class="sticky">
@@ -9,6 +17,7 @@
   ></mat-card>
   <!-- <fri3d-schedule-map-schedule></fri3d-schedule-map-schedule> -->
   <fri3d-schedule-map-schedule-list
+    [showUpcomingEvents]="showUpcomingEvents"
     (openRoomEvent)="onShowRoom($event)"
   ></fri3d-schedule-map-schedule-list>
 </div>
