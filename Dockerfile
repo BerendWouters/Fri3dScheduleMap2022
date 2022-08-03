@@ -16,7 +16,7 @@ COPY fri3d-schedule-map-2022 .
 
 ## Build the angular app in production mode and store the artifacts in dist folder
 
-RUN npm run ng build -- --configuration=prod --output-path=dist
+RUN npm run ng build -- --configuration=production --output-path=dist
 RUN apk add dos2unix --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 RUN dos2unix entrypoint.sh
 RUN ["chmod", "+x", "entrypoint.sh"]
