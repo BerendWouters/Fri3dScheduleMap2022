@@ -4,7 +4,7 @@
 # We label our stage as ‘builder’
 FROM node:lts-slim as builder
 
-COPY package.json package-lock.json ./
+COPY fri3d-schedule-map-2022/package.json fri3d-schedule-map-2022/package-lock.json ./
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
