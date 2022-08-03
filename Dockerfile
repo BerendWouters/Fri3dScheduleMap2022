@@ -2,7 +2,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as ‘builder’
-FROM node:lts-slim as builder
+FROM node:alpine as builder
 
 COPY fri3d-schedule-map-2022/package.json fri3d-schedule-map-2022/package-lock.json ./
 
