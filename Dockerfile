@@ -5,7 +5,7 @@
 FROM node:alpine as builder
 
 COPY fri3d-schedule-map-2022/package.json fri3d-schedule-map-2022/package-lock.json ./
-COPY entrypoint.sh entrypoint.sh
+
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
@@ -14,6 +14,7 @@ RUN npm ci && mkdir /app && mv ./node_modules ./app
 WORKDIR /app
 
 COPY fri3d-schedule-map-2022 .
+COPY entrypoint.sh entrypoint.sh
 
 ## Build the angular app in production mode and store the artifacts in dist folder
 
