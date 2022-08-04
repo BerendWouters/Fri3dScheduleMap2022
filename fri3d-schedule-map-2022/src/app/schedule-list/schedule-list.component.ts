@@ -44,7 +44,7 @@ export class ScheduleListComponent implements OnInit {
   }
 
   private filterEvents(events: Event[]): Event[] {
-    const now = new Date('2022-08-13T13:00:00+02:00');
+    const now = new Date();
     if (this.showUpcomingEvents) {
       console.log(events);
       const filteredEvents = events.filter(
