@@ -7,6 +7,8 @@ import {
   marker,
   Layer,
   Marker,
+  Icon,
+  icon,
 } from 'leaflet';
 import { getLocations, Location } from '../shared/locations.model';
 
@@ -20,7 +22,7 @@ export class MapComponent implements OnInit {
     this.renderMarker(value);
   }
 
-  constructor() {}
+  constructor() { }
 
   options = {
     layers: [
@@ -54,7 +56,14 @@ export class MapComponent implements OnInit {
       x.eventLocations.some((loc) => loc === room)
     );
     if (location) {
-      this.marker = marker(location.location);
+      this.marker = marker(location.location, {
+        icon: icon({
+          ...Icon.Default.prototype.options,
+          iconUrl: 'assets/marker-icon.png',
+          iconRetinaUrl: 'assets/marker-icon-2x.png',
+          shadowUrl: 'assets/marker-shadow.png'
+        })
+      })
     }
   }
 }
