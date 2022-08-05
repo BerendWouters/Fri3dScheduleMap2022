@@ -1,7 +1,18 @@
+<div>
 <div
-  style="width: 100vw; height: 80vh"
+  style="width: 100vw; height: 50vh"
   leaflet
   [leafletOptions]="options"
   [leafletLayers]="layers"
   [leafletLayer]="marker"
 ></div>
+<div class="locations">
+  <mat-card *ngFor="let location of locations" 
+  [style.borderRight]="'8px solid '+getRoomColor(location.name)">
+    {{ location.name }}
+    <mat-chip-list>
+      <mat-chip *ngFor="let room of location.eventLocations">{{ room }}</mat-chip>
+    </mat-chip-list>
+  </mat-card>
+</div>
+</div>

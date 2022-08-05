@@ -52,4 +52,22 @@ export function getLocations(): Location[] {
       location: [50.80034, 4.6639],
     },
   ];
+
+  
+
+}
+
+export function getLocationColor(location: string){
+  const existingLocations = getLocations();
+  const color = existingLocations.find((x) => x.name === location)?.color;
+return color;
+}
+
+export function getRoomColor(room: string) {
+  const location = room;
+  const existingLocations = getLocations();
+  const roomColor = existingLocations.find((x) =>
+    x.eventLocations.some((loc) => loc === location)
+  )?.color;
+  return roomColor;
 }

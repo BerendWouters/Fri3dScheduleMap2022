@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { tap } from 'rxjs';
-import { getLocations } from '../shared/locations.model';
+import { getRoomColor, getLocations } from '../shared/locations.model';
 import { Root, Event } from '../shared/schedule.model';
 import { ScheduleService } from '../shared/schedule.service';
 
@@ -55,17 +55,11 @@ export class ScheduleListComponent implements OnInit {
     }
     return events;
   }
-
-  getBackgroundColor(room: string) {
-    const location = room;
-    const existingLocations = getLocations();
-    const roomColor = existingLocations.find((x) =>
-      x.eventLocations.some((loc) => loc === location)
-    )?.color;
-    return roomColor;
-  }
-
   showRoom(room: string) {
     this.openRoomEvent.emit(room);
+  }
+
+  getRoomColor(room: string){
+    return getRoomColor(room);
   }
 }

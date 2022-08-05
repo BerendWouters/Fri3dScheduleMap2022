@@ -10,7 +10,7 @@ import {
   Icon,
   icon,
 } from 'leaflet';
-import { getLocations, Location } from '../shared/locations.model';
+import { getRoomColor, getLocations, Location, getLocationColor } from '../shared/locations.model';
 
 @Component({
   selector: 'fri3d-schedule-map-map',
@@ -39,9 +39,11 @@ export class MapComponent implements OnInit {
 
   marker!: Marker;
 
+  locations: Location[] = [];
+
   ngOnInit() {
-    const locations = getLocations();
-    this.layers = locations.map((x: Location) =>
+    this.locations = getLocations();
+    this.layers = this.locations.map((x: Location) =>
       circle(x.location, {
         fillColor: x.color,
         fill: true,
@@ -65,5 +67,8 @@ export class MapComponent implements OnInit {
         })
       })
     }
+  }
+  getRoomColor(room: string){
+    return getLocationColor(room);
   }
 }
