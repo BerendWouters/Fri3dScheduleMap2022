@@ -12,7 +12,7 @@ export function getLocations(): Location[] {
     {
       name: 'Circustent',
       eventLocations: ['Main One', 'Main Two', 'Solder Station'],
-      color: '#ac4052',
+      color: '#8835c9',
       location: [50.80036, 4.66432],
     },
     {
@@ -24,31 +24,31 @@ export function getLocations(): Location[] {
         'Large LED',
         'Stille ruimte',
       ],
-      color: '#badc0d',
+      color: '#ff3e3e',
       location: [50.79866, 4.66632],
     },
     {
       name: 'Shelter',
       eventLocations: ['Shelter'],
-      color: '#fa4099',
+      color: '#c085ff',
       location: [50.79917, 4.66494],
     },
     {
       name: 'Knutselbaar',
       eventLocations: ['Ingegno', 'Junior hacking'],
-      color: '#4b0e76',
+      color: '#ffad64',
       location: [50.80083, 4.66367],
     },
     {
       name: 'Kapel',
       eventLocations: ['Kapel'],
-      color: '#04dc0d',
+      color: '#3ce8b3',
       location: [50.79842, 4.66588],
     },
     {
       name: 'Hardware hacking',
       eventLocations: ['Hardware hacking area'],
-      color: '#3793ba',
+      color: '#2fad83',
       location: [50.80034, 4.6639],
     },
   ];
