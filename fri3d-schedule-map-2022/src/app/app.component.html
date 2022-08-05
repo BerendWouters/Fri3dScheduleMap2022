@@ -2,14 +2,32 @@
   <span>Fri3d Schedule map</span>
   <span class="example-spacer"></span>
   <div class="actions">
-    <mat-slide-toggle
-      [checked]="showUpcomingEvents"
-      (toggleChange)="onChangeUpcomingEvents()"
-      >Show upcoming events</mat-slide-toggle
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
     >
-    <mat-slide-toggle [checked]="showMap" (toggleChange)="onShowMap()">
-      Show map
-    </mat-slide-toggle>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-slide-toggle
+          [checked]="showUpcomingEvents"
+          (toggleChange)="onChangeUpcomingEvents()"
+          (click)="$event.stopPropagation()"
+          >Show upcoming events</mat-slide-toggle
+        >
+      </button>
+      <button mat-menu-item>
+        <mat-slide-toggle
+          [checked]="showMap"
+          (toggleChange)="onShowMap()"
+          (click)="$event.stopPropagation()"
+        >
+          Show map
+        </mat-slide-toggle>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>
 <div class="container">
