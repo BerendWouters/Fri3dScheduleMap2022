@@ -46,11 +46,9 @@ export class ScheduleListComponent implements OnInit {
   private filterEvents(events: Event[]): Event[] {
     const now = new Date();
     if (this.showUpcomingEvents) {
-      console.log(events);
       const filteredEvents = events.filter(
         (x) => new Date(x.date).valueOf() > now.valueOf()
       );
-      console.log(filteredEvents);
       return filteredEvents;
     }
     return events;
@@ -59,7 +57,7 @@ export class ScheduleListComponent implements OnInit {
     this.openRoomEvent.emit(room);
   }
 
-  getRoomColor(room: string){
+  getRoomColor(room: string) {
     return getRoomColor(room);
   }
 }
