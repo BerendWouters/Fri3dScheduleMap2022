@@ -1,6 +1,7 @@
 <ng-container *ngIf="root">
   <div class="rooms">
-    <mat-card *ngFor="let event of events" class="event-card">
+    <mat-card *ngFor="let event of events" class="event-card"
+      [style.borderRight]="'8px solid '+getBackgroundColor(event.room)">
       <mat-card-header>
         <img
           *ngIf="event.logo"
