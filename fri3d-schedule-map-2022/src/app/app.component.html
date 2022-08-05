@@ -7,17 +7,27 @@
       (toggleChange)="onChangeUpcomingEvents()"
       >Show upcoming events</mat-slide-toggle
     >
+    <mat-slide-toggle [checked]="showMap" (toggleChange)="onShowMap()">
+      Show map
+    </mat-slide-toggle>
   </div>
 </mat-toolbar>
 <div class="container">
-  <mat-card class="sticky">
-    <fri3d-schedule-map-map
-      [selectedRoom]="selectedRoom"
-    ></fri3d-schedule-map-map
-  ></mat-card>
+  <div class="row">
+    <div class="column">
+      <fri3d-schedule-map-schedule-list
+        [showUpcomingEvents]="showUpcomingEvents"
+        (openRoomEvent)="onShowRoom($event)"
+      ></fri3d-schedule-map-schedule-list>
+    </div>
+    <div class="column" *ngIf="showMap">
+      <mat-card class="sticky">
+        <fri3d-schedule-map-map
+          [selectedRoom]="selectedRoom"
+        ></fri3d-schedule-map-map
+      ></mat-card>
+    </div>
+  </div>
+
   <!-- <fri3d-schedule-map-schedule></fri3d-schedule-map-schedule> -->
-  <fri3d-schedule-map-schedule-list
-    [showUpcomingEvents]="showUpcomingEvents"
-    (openRoomEvent)="onShowRoom($event)"
-  ></fri3d-schedule-map-schedule-list>
 </div>

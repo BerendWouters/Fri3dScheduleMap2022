@@ -23,4 +23,8 @@ export class AppComponent {
   onChangeUpcomingEvents() {
     this.showUpcomingEvents = !this.showUpcomingEvents;
   }
+
+  onShowMap() {
+    this.showMap = !this.showMap;
+  }
 }

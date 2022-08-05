@@ -1,19 +1,28 @@
-.container{
-    display: flex;
-    flex-direction: row wrap;
-    gap: 2em;
-    justify-content: flex-start;
-    height: auto;
-    .sticky{
-        position: fixed;
-        margin-left:50vw
-    }
-}
-.sticky{
-    position: fixed;
-    // margin-left:68vw
+// .container {
+//   .sticky {
+//     position: fixed;
+//     margin-left: 50vw;
+//   }
+// }
+.sticky {
+  position: fixed;
+  // margin-left:68vw
 }
 
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+.row {
+  display: flex;
+  flex-direction: row wrap;
+  gap: 2em;
+  justify-content: flex-start;
+  height: auto;
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // flex-basis: 100%;
+    // flex: 1;
   }
+}
