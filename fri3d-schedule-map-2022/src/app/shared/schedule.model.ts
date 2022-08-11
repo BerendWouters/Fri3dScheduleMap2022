@@ -29,16 +29,19 @@ export interface Day {
 export interface RoomEvents {
   'Main One': Event[];
   'Main Two': Event[];
-  Knutselbaar: Event[];
+  'Junior hacking': Event[];
   Kapel: Event[];
   Shelter: Event[];
   Terrein: Event[];
   'Hardware hacking area': Event[];
-  'Medium Mosfet'?: Event[];
-  'Low Voltage'?: Event[];
+  'Medium Mosfet': Event[];
+  'Doorlopend programma': Event[];
+  'Low Voltage': Event[];
   'Tiny Tesseract': Event[];
   'Large LED': Event[];
-  'Junior hacking': Event[];
+  Buitenpodium: Event[];
+  Blokhut?: Event[];
+  Knutselbaar: Event[];
 }
 
 export interface AccessRoomEvent {

@@ -51,16 +51,19 @@ export function getLocations(): Location[] {
       color: '#2fad83',
       location: [50.80034, 4.6639],
     },
+    {
+      name: 'Buitenpodium',
+      eventLocations: ['Buitenpodium'],
+      color: '#c1402F',
+      location: [50.80064, 4.66466],
+    },
   ];
-
-  
-
 }
 
-export function getLocationColor(location: string){
+export function getLocationColor(location: string) {
   const existingLocations = getLocations();
   const color = existingLocations.find((x) => x.name === location)?.color;
-return color;
+  return color;
 }
 
 export function getRoomColor(room: string) {

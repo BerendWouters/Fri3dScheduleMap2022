@@ -70,6 +70,9 @@ export class ScheduleService {
       const juniorHacking = day.rooms['Junior hacking']
         ? day.rooms['Junior hacking']
         : [];
+      const Buitenpodium = day.rooms['Buitenpodium']
+        ? day.rooms['Buitenpodium']
+        : [];
       events = [
         ...events,
         ...hha,
@@ -82,6 +85,7 @@ export class ScheduleService {
         ...mediumMosfet,
         ...Shelter,
         ...Terrein,
+        ...Buitenpodium,
       ];
     });
     events.sort(
@@ -136,7 +140,11 @@ export class ScheduleService {
         case 'Knutselbaar':
           let events6: Event[] = [];
           this.root.schedule.conference.days.forEach((day) => {
-            events6 = [...events6, ...day.rooms['Knutselbaar']];
+            const knutselbaar = day.rooms['Knutselbaar'];
+            if (knutselbaar) {
+              events6 = [...events6, ...knutselbaar];
+            }
+            return knutselbaar;
           });
           return events6;
         case 'Medium Mosfet':
@@ -176,6 +184,17 @@ export class ScheduleService {
             events11 = [...events11, ...day.rooms['Junior hacking']];
           });
           return events11;
+        case 'Buitenpodium':
+          let events12: Event[] = [];
+          this.root.schedule.conference.days.forEach((day) => {
+            const Buitenpodium = day.rooms['Buitenpodium'];
+            if (Buitenpodium) {
+              console.log(Buitenpodium);
+              events12 = [...events12, ...Buitenpodium];
+            }
+            return events12;
+          });
+          return events12;
         default:
           break;
       }
